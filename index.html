@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda - Nelcy & Oscar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #fffafa, #f0e6ef);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    header {
+      background: url('Principal.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      animation: fadeIn 3s ease-in-out;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    nav a {
+      background: #7ab3a2;
+      color: white;
+      padding: 0.6rem 1rem;
+      margin-left: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #659d8e;
+    }
+    section {
+      padding: 3rem 1rem;
+      scroll-margin-top: 60px;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .galeria img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-family: 'Open Sans', sans-serif;
+    }
+    button {
+      padding: 1rem;
+      background-color: #7ab3a2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #659d8e;
+    }
+    .agradecimiento {
+      font-style: italic;
+      margin-top: 3rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .decoracion {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .decoracion img {
+      width: 100%;
+      opacity: 0.2;
+    }
+    .petalos {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+    .petalo {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('pngegg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: flotar 10s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes flotar {
+      0% { transform: translateY(-10%) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+    #music-player button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0 8px;
+    }
+    #music-player input[type="range"] {
+      flex-grow: 1;
+      accent-color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="decoracion">
+    <img src="https://pngimg.com/uploads/emerald/emerald_PNG46080.png" alt="Decoración esmeralda">
+  </div>
+
+  <div class="petalos" id="petalos"></div>
+
+  <nav>
+    <a href="#bienvenida">Inicio</a>
+    <a href="#galeria">Galería</a>
+    <a href="#evento">Evento</a>
+    <a href="#confirmacion">RSVP</a>
+  </nav>
+
+  <header id="bienvenida">
+    <h1>Nelcy & Oscar</h1>
+    <p>Nos casamos - 24 de Marzo de 2026</p>
+
+    <div id="music-player" style="margin-top: 20px; background: rgba(255, 255, 255, 0.08); padding: 8px 12px; border-radius: 15px; backdrop-filter: blur(4px); display: inline-flex; align-items: center; gap: 10px; font-family: 'Open Sans', sans-serif; color: white; box-shadow: 0 1px 6px rgba(0,0,0,0.3);">
+      <button id="play-btn">▶</button>
+      <button id="pause-btn" style="display:none;">❚❚</button>
+      <button id="stop-btn">■</button>
+      <input type="range" id="progress" min="0" max="100" value="0">
+      <span id="current-time" style="font-size: 0.8rem;">0:00</span>
+    </div>
+
+    <audio id="musica" loop preload="auto">
+      <source src="romantic.mp3" type="audio/mpeg" />
+      Tu navegador no soporta audio.
+    </audio>
+  </header>
+
+  <section>
+    <h2 style="font-family:'Dancing Script', Algerian; font-size: 2rem;">¡Estás cordialmente invitado!</h2>
+    <p style="max-width:600px; margin:auto; font-family:'Bahnschrift Light SemiCondensed', Bahnschrift Semilight; font-size:1.1rem;">Acompañanos a celebrar nuestro amor en una noche llena de magia, flores y recuerdos inolvidables. Queremos compartir este día único con las personas más importantes de nuestras vidas: ustedes.</p>
+  </section>
+
+  <section class="galeria" id="galeria">
+    <img src="1.jpg" alt="Pareja besándose al atardecer">
+    <img src="2.jpg" alt="Novios bailando">
+    <img src="3.jpg" alt="Boda ceremonia">
+    <img src="6.jpeg" alt="Manos con anillos">
+    <img src="4.jpg" alt="Pareja en la playa enamorada">
+  </section>
+
+  <section id="evento">
+    <h2 style="font-family:'Dancing Script', Bahnschrift Semilight;">Información del evento</h2>
+    <p style="font-family:'Bahnschrift Light SemiCondensed', Bahnschrift Semilight;"><strong>Fecha:</strong> 24 de Marzo de 2026</p>
+    <p style="font-family:'Bahnschrift Light SemiCondensed', Bahnschrift Semilight;"><strong>Hora:</strong> 10:00 hs</p>
+    <p style="font-family:'Bahnschrift Light SemiCondensed', Bahnschrift Semilight;"><strong>Lugar:</strong> Basilica Catedral Nuestra Señora del Socorro, El Socorro, Santander, Colombia</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.4081781680047!2d-73.26561879999998!3d6.4698674000000045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e69c2a68e6f6911%3A0x5a0870b0c77f95fc!2sBas%C3%ADlica%20Concatedral%20de%20Nuestra%20Se%C3%B1ora%20del%20Socorro!5e0!3m2!1ses!2sar!4v1752415086235!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <section id="confirmacion">
+    <h2 style="font-family:'Dancing Script', Algerian; font-size: 1.8rem;">Confirmá tu asistencia</h2>
+    <form action="https://formsubmit.co/your@email.com" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+      <input type="number" name="acompañantes" placeholder="Número de acompañantes" required>
+      <textarea name="comentarios" placeholder="¿Algo que quieras decirnos?"></textarea>
+      <button type="submit">Confirmar asistencia</button>
+    </form>
+  </section>
+
+  <section class="agradecimiento">
+    <p>Gracias por ser parte de nuestra historia ✨<br>Con amor, Sofía & Mateo</p>
+  </section>
+
+  <script>
+    const petalosContainer = document.getElementById('petalos');
+    for (let i = 0; i < 20; i++) {
+      const petalo = document.createElement('div');
+      petalo.className = 'petalo';
+      petalo.style.left = `${Math.random() * 100}vw`;
+      petalo.style.animationDuration = `${6 + Math.random() * 6}s`;
+      petalo.style.animationDelay = `${Math.random() * 5}s`;
+      petalosContainer.appendChild(petalo);
+    }
+
+    const audio = document.getElementById('musica');
+    const playBtn = document.getElementById('play-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const stopBtn = document.getElementById('stop-btn');
+    const progress = document.getElementById('progress');
+    const currentTimeSpan = document.getElementById('current-time');
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    playBtn.addEventListener('click', () => {
+      audio.play();
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'inline';
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      audio.pause();
+      pauseBtn.style.display = 'none';
+      playBtn.style.display = 'inline';
+    });
+
+    stopBtn.addEventListener('click', () => {
+      audio.pause();
+      audio.currentTime = 0;
+      pauseBtn.style.display = 'none';
+      playBtn.style.display = 'inline';
+      progress.value = 0;
+      currentTimeSpan.textContent = '0:00';
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progress.value = percent;
+        currentTimeSpan.textContent = formatTime(audio.currentTime);
+      }
+    });
+
+    progress.addEventListener('input', () => {
+      if (audio.duration) {
+        const time = (progress.value / 100) * audio.duration;
+        audio.currentTime = time;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      pauseBtn.style.display = 'none';
+      playBtn.style.display = 'inline';
+      progress.value = 0;
+      currentTimeSpan.textContent = '0:00';
+    });
+  </script>
+</body>
+</html>
